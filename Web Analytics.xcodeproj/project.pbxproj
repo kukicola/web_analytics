@@ -6,12 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5A5A04E72CC4318300B75EDB /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5A04E62CC4318300B75EDB /* SwiftyJSON */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5A5A04A42CC40E3E00B75EDB /* Web Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Web Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5A5A04A62CC40E3E00B75EDB /* Web Analytics */ = {
+		5A5A04DD2CC42CA800B75EDB /* Web Analytics */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Web Analytics";
 			sourceTree = "<group>";
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A5A04E72CC4318300B75EDB /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +37,7 @@
 		5A5A049B2CC40E3E00B75EDB = {
 			isa = PBXGroup;
 			children = (
-				5A5A04A62CC40E3E00B75EDB /* Web Analytics */,
+				5A5A04DD2CC42CA800B75EDB /* Web Analytics */,
 				5A5A04A52CC40E3E00B75EDB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,10 +66,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5A5A04A62CC40E3E00B75EDB /* Web Analytics */,
+				5A5A04DD2CC42CA800B75EDB /* Web Analytics */,
 			);
 			name = "Web Analytics";
 			packageProductDependencies = (
+				5A5A04E62CC4318300B75EDB /* SwiftyJSON */,
 			);
 			productName = "Web Analytics";
 			productReference = 5A5A04A42CC40E3E00B75EDB /* Web Analytics.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 5A5A049B2CC40E3E00B75EDB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5A5A04E52CC4318300B75EDB /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5A5A04A52CC40E3E00B75EDB /* Products */;
 			projectDirPath = "";
@@ -339,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A5A04E52CC4318300B75EDB /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A5A04E62CC4318300B75EDB /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A5A04E52CC4318300B75EDB /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A5A049C2CC40E3E00B75EDB /* Project object */;
 }

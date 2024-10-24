@@ -16,19 +16,25 @@ struct MetricList: View {
     var body: some View {
         GroupBox(label: Label(title, systemImage: image).foregroundStyle(color)) {
             VStack(alignment: .leading) {
-                ForEach(metrics) { metric in
-                    if metric.value > 0 {
-                        VStack {
-                            HStack {
-                                Text(metric.name.count > 0 ? metric.name : "None").lineLimit(1).truncationMode(.tail)
-                                Spacer()
-                                Text(String(metric.value)).fontWeight(.semibold)
-                            }
-                            ProgressView(value: Double(metric.value) / totalValue()).tint(color)
-                        }.padding(5)
+                if metrics.isEmpty {
+                    Spacer()
+                    Text("No data")
+                    Spacer()
+                } else {
+                    ForEach(metrics) { metric in
+                        if metric.value > 0 {
+                            VStack {
+                                HStack {
+                                    Text(metric.name.count > 0 ? metric.name : "None").lineLimit(1).truncationMode(.tail)
+                                    Spacer()
+                                    Text(String(metric.value)).fontWeight(.semibold)
+                                }
+                                ProgressView(value: Double(metric.value) / totalValue()).tint(color)
+                            }.padding(5)
+                        }
                     }
+                    Spacer()
                 }
-                Spacer()
             }
         }.frame(minHeight: 200)
     }

@@ -68,8 +68,9 @@ struct Graph: View {
                         }
                 }
             }
-            .frame(height: 100)
+            .frame(height: 150)
             .chartXScale(domain: [0, data.count - 1])
+            .chartYScale(domain: [0, [data.max { a, b in a.value < b.value }!.value, 1].max()!])
             .chartXAxis {
                 AxisMarks(values: .automatic(desiredCount: UIDevice.current.userInterfaceIdiom == .pad ? 7 : 3)) {
                     let index = $0.as(Int.self)!

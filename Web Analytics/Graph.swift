@@ -97,6 +97,6 @@ struct Graph: View {
     private func difference() -> Int {
         let prev = prev == 0 ? 1 : prev
         let diff = Double(total) / Double(prev) - 1
-        return Int(diff * 100)
+        return Int((diff * 100).rounded())
     }
 }

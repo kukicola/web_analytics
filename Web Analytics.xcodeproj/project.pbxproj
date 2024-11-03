@@ -63,6 +63,7 @@
 				Period.swift,
 				PeriodsHelper.swift,
 				Settings.swift,
+				TotalsResponse.swift,
 			);
 			target = 5A182F3C2CD7CEFE003DD238 /* AnalyticsWidgetExtension */;
 		};

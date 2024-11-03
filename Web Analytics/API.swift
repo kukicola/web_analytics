@@ -62,6 +62,70 @@ class API {
         return DetailsResponse(json: json)
     }
     
+    func fetchTotals() async throws -> TotalsResponse {
+        let variables = [
+            "accountTag": settings.accountID,
+            "today": [
+                "AND": [
+                    [
+                        "bot": 0
+                    ],
+                    [
+                        "datetime_geq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.today).range()[0]))T00:00:00Z",
+                        "datetime_leq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.today).range()[1]))T23:59:59Z"
+                    ],
+                ]
+            ],
+            "yesterday": [
+                "AND": [
+                    [
+                        "bot": 0
+                    ],
+                    [
+                        "datetime_geq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.yesterday).range()[0]))T00:00:00Z",
+                        "datetime_leq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.yesterday).range()[1]))T23:59:59Z"
+                    ],
+                ]
+            ],
+            "yesterdayPrev": [
+                "AND": [
+                    [
+                        "bot": 0
+                    ],
+                    [
+                        "datetime_geq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.yesterday).range()[2]))T00:00:00Z",
+                        "datetime_leq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.yesterday).range()[3]))T23:59:59Z"
+                    ],
+                ]
+            ],
+            "last7Days": [
+                "AND": [
+                    [
+                        "bot": 0
+                    ],
+                    [
+                        "datetime_geq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.last7Days).range()[0]))T00:00:00Z",
+                        "datetime_leq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.last7Days).range()[1]))T23:59:59Z"
+                    ],
+                ]
+            ],
+            "last7DaysPrev": [
+                "AND": [
+                    [
+                        "bot": 0
+                    ],
+                    [
+                        "datetime_geq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.last7Days).range()[2]))T00:00:00Z",
+                        "datetime_leq": "\(periodsHelper.dateFormatter.string(from: periodsHelper.get(.last7Days).range()[3]))T23:59:59Z"
+                    ],
+                ]
+            ],
+        ] as [String : Any]
+        let body = ["query": graphQLTotalQuery(), "variables": variables] as [String : Any]
+        let json = try await request(url: "https://api.cloudflare.com/client/v4/graphql", method: "POST", body: body)
+        return TotalsResponse(json: json)
+    }
+    
     private func request(url: String, method: String, body: [String: Any] = [:]) async throws -> JSON {
         let url = URL(string: url)!
         var request = URLRequest(url: url)
@@ -174,5 +238,60 @@ class API {
         }
         """
     }
-
+    
+    private func graphQLTotalQuery() -> String {
+        return """
+        {
+          viewer {
+            accounts(filter: { accountTag: $accountTag }) {
+              today: rumPageloadEventsAdaptiveGroups(limit: 100, filter: $today) {
+                count
+                sum {
+                  visits
+                }
+                dimensions { 
+                  siteTag
+                }
+              }
+              yesterday: rumPageloadEventsAdaptiveGroups(limit: 100, filter: $yesterday) {
+                count
+                sum {
+                  visits
+                }
+                dimensions { 
+                  siteTag
+                }
+              }
+              yesterdayPrev: rumPageloadEventsAdaptiveGroups(limit: 100, filter: $yesterdayPrev) {
+                count
+                sum {
+                  visits
+                }
+                dimensions { 
+                  siteTag
+                }
+              }
+              last7Days: rumPageloadEventsAdaptiveGroups(limit: 100, filter: $last7Days) {
+                count
+                sum {
+                  visits
+                }
+                dimensions { 
+                  siteTag
+                }
+              }
+              last7DaysPrev: rumPageloadEventsAdaptiveGroups(limit: 100, filter: $last7DaysPrev) {
+                count
+                sum {
+                  visits
+                }
+                dimensions { 
+                  siteTag
+                }
+              }
+            }
+          }
+        }
+        """
+    }
 }

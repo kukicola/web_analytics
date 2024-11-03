@@ -12,15 +12,35 @@ import SwiftData
 struct AnalyticsWidgetItem : View {
     var title : String
     var value : Int
+    var prev : Int
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(title).font(.caption)
+                Text(title).font(.caption).foregroundStyle(.secondary)
                 Spacer()
             }
-            Text(String(value))
+            HStack(alignment: .lastTextBaseline) {
+                Text(String(value))
+                
+                let diff = difference()
+                
+                if (diff > 0) {
+                    Text(String("+\(diff)%")).font(.caption).foregroundStyle(.green)
+                } else if (diff < 0) {
+                    Text(String("\(diff)%")).font(.caption).foregroundStyle(.red)
+                } else {
+                    Text(String("=\(diff)%")).font(.caption).foregroundStyle(.secondary)
+                }
+                Spacer()
+            }
         }.frame(maxWidth: .infinity)
+    }
+    
+    private func difference() -> Int {
+        let prev = prev == 0 ? 1 : prev
+        let diff = Double(value) / Double(prev) - 1
+        return Int((diff * 100).rounded())
     }
 }
 
@@ -29,11 +49,11 @@ struct AnalyticsWidgetPage : View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(page.name).font(.headline).foregroundColor(.red).padding(EdgeInsets(top: 0, leading: 0, bottom: 1, trailing: 0))
+            Text(page.name).font(.headline).padding(EdgeInsets(top: 0, leading: 0, bottom: 1, trailing: 0))
             HStack {
-                AnalyticsWidgetItem(title: "Today", value: page.today)
-                AnalyticsWidgetItem(title: "Yesterday", value: page.yesterday)
-                AnalyticsWidgetItem(title: "Last 7 days", value: page.last7days)
+                AnalyticsWidgetItem(title: "Today", value: page.today, prev: page.yesterday)
+                AnalyticsWidgetItem(title: "Yesterday", value: page.yesterday, prev: page.yesterdayPrev)
+                AnalyticsWidgetItem(title: "Last 7 days", value: page.last7Days, prev: page.last7DaysPrev)
             }
         }
     }
@@ -71,7 +91,7 @@ struct AnalyticsWidget: Widget {
     AnalyticsWidget()
 } timeline: {
     AnalyticsEntry(date: Date(), pages: [
-        AnalyticsEntry.PageEntry(name: "example.com", today: 3, yesterday: 5, last7days: 40),
-        AnalyticsEntry.PageEntry(name: "anything.com", today: 0, yesterday: 1, last7days: 25),
+        AnalyticsEntry.PageEntry(name: "example.com", today: 3, yesterday: 5, yesterdayPrev: 6, last7Days: 40, last7DaysPrev: 40),
+        AnalyticsEntry.PageEntry(name: "anything.com", today: 0, yesterday: 1, yesterdayPrev: 6, last7Days: 25, last7DaysPrev: 40),
     ])
 }

@@ -8,7 +8,6 @@
 import SwiftyJSON
 
 struct DetailsResponse {
-    let totals: Totals
     let totalsPrev: Totals
     let series: [Series]
     let refferers: [Metric]
@@ -59,7 +58,6 @@ struct DetailsResponse {
     
     init(json: JSON) {
         let base = json["data"]["viewer"]["accounts"][0]
-        totals = Totals(json: base["totals"][0])
         totalsPrev = Totals(json: base["totalsPrev"][0])
         series = base["series"].arrayValue.map { Series(json: $0) }
         refferers = base["refferers"].arrayValue.map { Metric(json: $0) }

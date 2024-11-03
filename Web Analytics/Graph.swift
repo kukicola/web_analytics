@@ -12,7 +12,6 @@ struct Graph: View {
     var title: String
     var image: String
     var data: [GraphSeries]
-    var total: Int
     var prev: Int
     var color: Color
     
@@ -23,7 +22,7 @@ struct Graph: View {
     var body: some View {
         GroupBox(label: Label(title, systemImage: image).foregroundStyle(color)) {
             HStack(alignment: .lastTextBaseline) {
-                Text(String(total)).font(.system(size: 26, weight: .bold))
+                Text(String(total())).font(.system(size: 26, weight: .bold))
                 let diff = difference()
                 
                 if (diff > 0) {
@@ -96,7 +95,11 @@ struct Graph: View {
     
     private func difference() -> Int {
         let prev = prev == 0 ? 1 : prev
-        let diff = Double(total) / Double(prev) - 1
+        let diff = Double(total()) / Double(prev) - 1
         return Int((diff * 100).rounded())
+    }
+    
+    private func total() -> Int {
+        data.reduce(0) { $0 + $1.value }
     }
 }

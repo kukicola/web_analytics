@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @Binding var pages: [Page]
     @State private var currentPage: Page?
+    @State var selectedPeriod = Periods.last7Days
     
     var body: some View {
         NavigationSplitView {
@@ -20,7 +21,7 @@ struct MainView: View {
         }
         detail: {
             if currentPage != nil {
-                PageDetailsView(page: $currentPage)
+                PageDetailsView(page: $currentPage, selectedPeriod: $selectedPeriod)
             }
         }
         .task {

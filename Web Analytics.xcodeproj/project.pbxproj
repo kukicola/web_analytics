@@ -7,22 +7,97 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A182F3E2CD7CEFE003DD238 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A182EF72CD7CCCB003DD238 /* WidgetKit.framework */; };
+		5A182F3F2CD7CEFE003DD238 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A182EF92CD7CCCB003DD238 /* SwiftUI.framework */; };
+		5A182F4A2CD7CEFF003DD238 /* AnalyticsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5A182F3D2CD7CEFE003DD238 /* AnalyticsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5A182F5C2CD7DE79003DD238 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5A182F5B2CD7DE79003DD238 /* SwiftyJSON */; };
 		5A5A04E72CC4318300B75EDB /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5A04E62CC4318300B75EDB /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5A182F482CD7CEFF003DD238 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A5A049C2CC40E3E00B75EDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A182F3C2CD7CEFE003DD238;
+			remoteInfo = AnalyticsWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5A182F082CD7CCCC003DD238 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5A182F4A2CD7CEFF003DD238 /* AnalyticsWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5A182EF72CD7CCCB003DD238 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5A182EF92CD7CCCB003DD238 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5A182F3D2CD7CEFE003DD238 /* AnalyticsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AnalyticsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A182F532CD7DCF4003DD238 /* AnalyticsWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalyticsWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		5A5A04A42CC40E3E00B75EDB /* Web Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Web Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5A182F4B2CD7CEFF003DD238 /* Exceptions for "AnalyticsWidget" folder in "AnalyticsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5A182F3C2CD7CEFE003DD238 /* AnalyticsWidgetExtension */;
+		};
+		5A182F552CD7DD98003DD238 /* Exceptions for "Web Analytics" folder in "AnalyticsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				API.swift,
+				DetailsResponse.swift,
+				Page.swift,
+				Period.swift,
+				PeriodsHelper.swift,
+				Settings.swift,
+			);
+			target = 5A182F3C2CD7CEFE003DD238 /* AnalyticsWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		5A182F402CD7CEFE003DD238 /* AnalyticsWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5A182F4B2CD7CEFF003DD238 /* Exceptions for "AnalyticsWidget" folder in "AnalyticsWidgetExtension" target */,
+			);
+			path = AnalyticsWidget;
+			sourceTree = "<group>";
+		};
 		5A5A04DD2CC42CA800B75EDB /* Web Analytics */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5A182F552CD7DD98003DD238 /* Exceptions for "Web Analytics" folder in "AnalyticsWidgetExtension" target */,
+			);
 			path = "Web Analytics";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A182F3A2CD7CEFE003DD238 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A182F5C2CD7DE79003DD238 /* SwiftyJSON in Frameworks */,
+				5A182F3F2CD7CEFE003DD238 /* SwiftUI.framework in Frameworks */,
+				5A182F3E2CD7CEFE003DD238 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A5A04A12CC40E3E00B75EDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -34,10 +109,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A182EF62CD7CCCB003DD238 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A182EF72CD7CCCB003DD238 /* WidgetKit.framework */,
+				5A182EF92CD7CCCB003DD238 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A5A049B2CC40E3E00B75EDB = {
 			isa = PBXGroup;
 			children = (
+				5A182F532CD7DCF4003DD238 /* AnalyticsWidgetExtensionRelease.entitlements */,
 				5A5A04DD2CC42CA800B75EDB /* Web Analytics */,
+				5A182F402CD7CEFE003DD238 /* AnalyticsWidget */,
+				5A182EF62CD7CCCB003DD238 /* Frameworks */,
 				5A5A04A52CC40E3E00B75EDB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5A5A04A42CC40E3E00B75EDB /* Web Analytics.app */,
+				5A182F3D2CD7CEFE003DD238 /* AnalyticsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,6 +141,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A182F3C2CD7CEFE003DD238 /* AnalyticsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A182F4C2CD7CEFF003DD238 /* Build configuration list for PBXNativeTarget "AnalyticsWidgetExtension" */;
+			buildPhases = (
+				5A182F392CD7CEFE003DD238 /* Sources */,
+				5A182F3A2CD7CEFE003DD238 /* Frameworks */,
+				5A182F3B2CD7CEFE003DD238 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5A182F402CD7CEFE003DD238 /* AnalyticsWidget */,
+			);
+			name = AnalyticsWidgetExtension;
+			packageProductDependencies = (
+				5A182F5B2CD7DE79003DD238 /* SwiftyJSON */,
+			);
+			productName = AnalyticsWidgetExtension;
+			productReference = 5A182F3D2CD7CEFE003DD238 /* AnalyticsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5A5A04A32CC40E3E00B75EDB /* Web Analytics */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A5A04B32CC40E3F00B75EDB /* Build configuration list for PBXNativeTarget "Web Analytics" */;
@@ -60,10 +171,12 @@
 				5A5A04A02CC40E3E00B75EDB /* Sources */,
 				5A5A04A12CC40E3E00B75EDB /* Frameworks */,
 				5A5A04A22CC40E3E00B75EDB /* Resources */,
+				5A182F082CD7CCCC003DD238 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5A182F492CD7CEFF003DD238 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5A5A04DD2CC42CA800B75EDB /* Web Analytics */,
@@ -83,9 +196,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					5A182F3C2CD7CEFE003DD238 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					5A5A04A32CC40E3E00B75EDB = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -109,11 +225,19 @@
 			projectRoot = "";
 			targets = (
 				5A5A04A32CC40E3E00B75EDB /* Web Analytics */,
+				5A182F3C2CD7CEFE003DD238 /* AnalyticsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5A182F3B2CD7CEFE003DD238 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A5A04A22CC40E3E00B75EDB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +248,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A182F392CD7CEFE003DD238 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A5A04A02CC40E3E00B75EDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,7 +264,75 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5A182F492CD7CEFF003DD238 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A182F3C2CD7CEFE003DD238 /* AnalyticsWidgetExtension */;
+			targetProxy = 5A182F482CD7CEFF003DD238 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5A182F4D2CD7CEFF003DD238 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U3C3GEQ7M9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnalyticsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AnalyticsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "webtie.Web-Analytics.AnalyticsWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A182F4E2CD7CEFF003DD238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AnalyticsWidgetExtensionRelease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U3C3GEQ7M9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnalyticsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AnalyticsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "webtie.Web-Analytics.AnalyticsWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		5A5A04B12CC40E3F00B75EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -292,7 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Web Analytics/Web_Analytics.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Web Analytics/Web AnalyticsRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Web Analytics/Preview Content\"";
@@ -329,6 +528,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A182F4C2CD7CEFF003DD238 /* Build configuration list for PBXNativeTarget "AnalyticsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A182F4D2CD7CEFF003DD238 /* Debug */,
+				5A182F4E2CD7CEFF003DD238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5A5A049F2CC40E3E00B75EDB /* Build configuration list for PBXProject "Web Analytics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -361,6 +569,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5A182F5B2CD7DE79003DD238 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A5A04E52CC4318300B75EDB /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		5A5A04E62CC4318300B75EDB /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5A5A04E52CC4318300B75EDB /* XCRemoteSwiftPackageReference "SwiftyJSON" */;

@@ -11,108 +11,6 @@ enum HttpError: Error {
     case invalidResponse
 }
 
-func graphQLQuery(_ ts: String) -> String {
-    return """
-    {
-      viewer {
-        accounts(filter: { accountTag: $accountTag }) {
-          totals: rumPageloadEventsAdaptiveGroups(limit: 1, filter: $filter) {
-            count
-            sum {
-              visits
-            }
-          }
-          totalsPrev: rumPageloadEventsAdaptiveGroups(limit: 1, filter: $filterPrev) {
-            count
-            sum {
-              visits
-            }
-          }
-          refferers: rumPageloadEventsAdaptiveGroups(
-            filter: $filter
-            limit: 10
-            orderBy: ["sum_visits_DESC"]
-          ) {
-            sum {
-              visits # based on visits
-            }
-            dimensions {
-              metric: refererHost
-            }
-          }
-          paths: rumPageloadEventsAdaptiveGroups(
-            filter: $filter
-            limit: 10
-            orderBy: ["count_DESC"]
-          ) {
-            count # based od page views
-            dimensions {
-              metric: requestPath
-            }
-          }
-          browsers: rumPageloadEventsAdaptiveGroups(
-            filter: $filter
-            limit: 10
-            orderBy: ["sum_visits_DESC"]
-          ) {
-            sum {
-              visits # based on visits
-            }
-            dimensions {
-              metric: userAgentBrowser
-            }
-          }
-          os: rumPageloadEventsAdaptiveGroups(
-            filter: $filter
-            limit: 10
-            orderBy: ["sum_visits_DESC"]
-          ) {
-            sum {
-              visits # based on visits
-            }
-            dimensions {
-              metric: userAgentOS
-            }
-          }
-          device: rumPageloadEventsAdaptiveGroups(
-            filter: $filter
-            limit: 10
-            orderBy: ["sum_visits_DESC"]
-          ) {
-            sum {
-              visits # based on visits
-            }
-            dimensions {
-              metric: deviceType
-            }
-          }
-          countries: rumPageloadEventsAdaptiveGroups(
-            filter: $filter
-            limit: 10
-            orderBy: ["sum_visits_DESC"]
-          ) {
-            sum {
-              visits
-            }
-            dimensions {
-              metric: countryName
-            }
-          }
-          series: rumPageloadEventsAdaptiveGroups(limit: 5000, filter: $filter) {
-            count
-            sum {
-              visits
-            }
-            dimensions {
-              ts: \(ts)
-            }
-          }
-        }
-      }
-    }
-    """
-}
-
 class API {
     private var settings: Settings
     private let periodsHelper = PeriodsHelper()
@@ -180,4 +78,101 @@ class API {
         }
         return JSON(data)
     }
+    
+    private func graphQLQuery(_ ts: String) -> String {
+        return """
+        {
+          viewer {
+            accounts(filter: { accountTag: $accountTag }) {
+              totalsPrev: rumPageloadEventsAdaptiveGroups(limit: 1, filter: $filterPrev) {
+                count
+                sum {
+                  visits
+                }
+              }
+              refferers: rumPageloadEventsAdaptiveGroups(
+                filter: $filter
+                limit: 10
+                orderBy: ["sum_visits_DESC"]
+              ) {
+                sum {
+                  visits # based on visits
+                }
+                dimensions {
+                  metric: refererHost
+                }
+              }
+              paths: rumPageloadEventsAdaptiveGroups(
+                filter: $filter
+                limit: 10
+                orderBy: ["count_DESC"]
+              ) {
+                count # based od page views
+                dimensions {
+                  metric: requestPath
+                }
+              }
+              browsers: rumPageloadEventsAdaptiveGroups(
+                filter: $filter
+                limit: 10
+                orderBy: ["sum_visits_DESC"]
+              ) {
+                sum {
+                  visits # based on visits
+                }
+                dimensions {
+                  metric: userAgentBrowser
+                }
+              }
+              os: rumPageloadEventsAdaptiveGroups(
+                filter: $filter
+                limit: 10
+                orderBy: ["sum_visits_DESC"]
+              ) {
+                sum {
+                  visits # based on visits
+                }
+                dimensions {
+                  metric: userAgentOS
+                }
+              }
+              device: rumPageloadEventsAdaptiveGroups(
+                filter: $filter
+                limit: 10
+                orderBy: ["sum_visits_DESC"]
+              ) {
+                sum {
+                  visits # based on visits
+                }
+                dimensions {
+                  metric: deviceType
+                }
+              }
+              countries: rumPageloadEventsAdaptiveGroups(
+                filter: $filter
+                limit: 10
+                orderBy: ["sum_visits_DESC"]
+              ) {
+                sum {
+                  visits
+                }
+                dimensions {
+                  metric: countryName
+                }
+              }
+              series: rumPageloadEventsAdaptiveGroups(limit: 5000, filter: $filter) {
+                count
+                sum {
+                  visits
+                }
+                dimensions {
+                  ts: \(ts)
+                }
+              }
+            }
+          }
+        }
+        """
+    }
+
 }

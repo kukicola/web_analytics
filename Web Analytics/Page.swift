@@ -7,12 +7,12 @@
 
 import SwiftyJSON
 
-struct Page: Identifiable, Hashable {
-    var id: String { siteTag }
-    var name: String
-    var siteTag: String
+public struct Page: Identifiable, Hashable {
+    public var id: String { siteTag }
+    public var name: String
+    public var siteTag: String
     
-    init(json: JSON) {
+    public init(json: JSON) {
         let siteTag = json["site_tag"].stringValue
         let name = json["ruleset"]["zone_name"].stringValue
         
